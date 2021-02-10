@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Redirect} from "react-router-dom";
+import {Redirect, Link} from "react-router-dom";
 
 class signup extends Component {
     constructor() {
@@ -66,6 +66,7 @@ class signup extends Component {
                         <button type="submit">Submit</button>
                     </form>
                 </div>}
+                <Link to="/">Home</Link><br/><br/>
             </div>
         );
     }

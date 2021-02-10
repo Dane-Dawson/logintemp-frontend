@@ -7,15 +7,14 @@ import {
     useHistory
   } from "react-router-dom";
 
-class home extends Component {
+class auth extends Component {
     render() {
         return (
             <div>
                 <h1>What would you like to do?</h1><br/>
 
                 <Link to="/login">Login</Link><br/><br/>
-                <Link to="/signup">SignUp</Link><br/><br/>
-                <Link to="/auth">Auth Check</Link>
+                <Link to="/signup">SignUp</Link>
 
                 {/*Below is how to get a similar effect without using a <Link>  */}
                 {/* 
@@ -28,4 +27,4 @@ class home extends Component {
     }
 }
 
-export default home;
+export default auth;

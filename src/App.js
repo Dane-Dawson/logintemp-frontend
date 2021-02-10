@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import SignUp from './signup'
 import Login from './login'
 import Home from './home'
+import Auth from './auth'
 
 import {
   BrowserRouter,
@@ -36,7 +36,9 @@ class App extends Component {
               <SignUp />
             </Route>
 
-
+            <Route exact path='/auth'>
+              <Auth />
+            </Route>
 
           </Switch>
         </BrowserRouter>

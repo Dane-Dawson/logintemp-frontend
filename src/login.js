@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {
+    Link
+  } from "react-router-dom";
 
 class login extends Component {
     constructor(){
@@ -43,8 +46,16 @@ class login extends Component {
             // If you look in application controller we are requesting the header Authorization
             // Once it is recieved the token is decrypted and access to data is granted
             localStorage.setItem("token", response.jwt)
+            //The line below should also work
+            // localStorage.token = response.jwt
+
+            //Console log here just to see what the data you get back looks like.
             console.log(response)
+
             this.setState({currentUser: response.user.username, loggedIn: true})
+            //This example stores the user and loggedIn state here, but you could easily hold this
+            // in a parent component and pass down currentUser as props.
+            //This was just used to demonstrate quick and easy how it could work.
         })
     }
 
@@ -66,6 +77,7 @@ class login extends Component {
                     <button type="submit">Submit</button>
                 </form>
                 {this.greeting()}
+                <Link to="/">Home</Link><br/><br/>
             </div>
         );
     }

@@ -1,3 +1,16 @@
+# README
+
+This is a template to help you with AN approach (not the only or the best) for setting up JWT authentication, and is paired with the following back-end template:
+
+https://github.com/Dane-Dawson/logintemp-backend
+
+I HIGHLY ENCOURAGE not to clone this repo or directly copy and paste from it, but to write all your code yourself (even if you use this template as a direct starting point). Sometimes there are some hidden character issues with copy pasting from the github pages that will give you very confusing errors.
+
+
+
+
+--Default React README below--
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
