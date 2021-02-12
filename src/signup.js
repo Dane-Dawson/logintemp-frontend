@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import {Redirect, Link} from "react-router-dom";
 
 class signup extends Component {
-    constructor() {
-        super()
-        this.state = {
+    // State is used for a controlled form, state.created can be used for error tracking
+        state = {
             username: "",
             password: "",
             email: "",
             created: false
         }
-    }
 
-
+        // Handle change event listener with a clean destructuring for value/name
     handleChange = (event) => {
         const { name, value } = event.target
 
@@ -21,9 +19,10 @@ class signup extends Component {
         })
     };
 
-
+    // Create user function, fairly straightforward POST
     createUser = (event) => {
         event.preventDefault()
+        // Since data is stored in state you can clear the form immediately on submit
         event.target.reset()
         const { username, email, password } = this.state
 
@@ -44,6 +43,7 @@ class signup extends Component {
             .then(r => r.json())
             .then(response => {
                 // We are reciving a status of "created" if the user is valid and saved to the database
+                // This also shows how you can interact with the status of a response
                 if (response.status === "created") {
                     this.setState({ created: true })
                 }

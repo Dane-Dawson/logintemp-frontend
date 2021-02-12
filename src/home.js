@@ -7,9 +7,11 @@ class home extends Component {
   render() {
     return (
       <div>
-      {/* completely unneccessary img, but why not make this at least a little fun */}
-        <img src="https://lh3.googleusercontent.com/proxy/7fe8OuvfHYRRw6sVIHoC47aZ0Rm3nIByiNSaOoTAGxAKiqJs5PLFwXEs6zpm1iyotas-FktHkf6rrVnlff-_-JFJmzGsPJCwgLpBDTS-43O62Ov7Im2SWocFnqTnkYC3KlvfZOCW0N1vuCHSbg9DQPgOEcm4OFL4qOA"/>
+      {/* completely unneccessary welcome img, but why not make this at least a little fun */}
+        <img src="https://media.tenor.com/images/22f7fff1a213648197650e36205bb994/tenor.gif"/>
         <br />
+        <br />
+        {/* Simple use of the <Link/> component from react-router */}
         <Link to="/login">Login</Link>
         <br />
         <br />
