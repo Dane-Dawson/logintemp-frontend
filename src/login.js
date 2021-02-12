@@ -45,12 +45,12 @@ class login extends Component {
             // The token below will be used as a header for Authorization in your fetches
             // If you look in application controller we are requesting the header Authorization
             // Once it is recieved the token is decrypted and access to data is granted
-            localStorage.setItem("token", response.jwt)
+            // localStorage.setItem("token", response.jwt)
             //The line below should also work
-            // localStorage.token = response.jwt
+            localStorage.token = response.jwt
 
             //Console log here just to see what the data you get back looks like.
-            console.log(response)
+            this.props.setCurrentUser(response.user)
 
             this.setState({currentUser: response.user.username, loggedIn: true})
             //This example stores the user and loggedIn state here, but you could easily hold this
@@ -59,13 +59,6 @@ class login extends Component {
         })
     }
 
-    greeting = () => {
-        if(this.state.loggedIn){
-            return <h3>Hello {this.state.currentUser}</h3>
-        }else{
-            return <h3>Please Log In</h3>
-        }
-    }
 
 
     render() {
@@ -76,7 +69,6 @@ class login extends Component {
                     <input type="text" name="password" placeholder="Password" onChange={this.handleChange} />
                     <button type="submit">Submit</button>
                 </form>
-                {this.greeting()}
                 <Link to="/">Home</Link><br/><br/>
             </div>
         );
