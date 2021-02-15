@@ -60,6 +60,7 @@ class signup extends Component {
           <Redirect to="/login" />
         ) : (
           <div>
+            <br />
             <form onSubmit={this.createUser}>
               <input
                 type="text"
@@ -67,18 +68,22 @@ class signup extends Component {
                 placeholder="Email"
                 onChange={this.handleChange}
               />
+              <br />
               <input
                 type="text"
                 name="username"
                 placeholder="Username"
                 onChange={this.handleChange}
               />
+              <br />
               <input
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Password"
                 onChange={this.handleChange}
               />
+              <br />
+              <br />
               <button type="submit">Submit</button>
             </form>
           </div>

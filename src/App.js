@@ -41,7 +41,7 @@ class App extends Component {
       );
     } else {
       return (
-        <div>
+        <div className="please-log-in">
           <h2>I'm sorry, I don't know who you are...</h2>
           <h3>Please log in below!</h3>
         </div>
@@ -99,16 +99,14 @@ class App extends Component {
             </span>
           ) : null}
           <br />
-          <br />
           <Link className="pretty-link" to="/">
-            Home
+            Home (Click here if you are lost)
           </Link>
           <br />
           <Link className="pretty-link" to="/auth">
             Auth Check{" "}
-            {!this.state.loggedIn ? "(works better if logged in!)" : null}
+            {!this.state.loggedIn ? "(Works better if you're logged in!)" : "(Try it now you're logged in!)"}
           </Link>{" "}
-          <br />
           <br />
           <Switch>
             <Route exact path="/">
@@ -133,8 +131,6 @@ class App extends Component {
             </Route>
           </Switch>
         </BrowserRouter>
-        <br />
-        <br />
       </div>
     );
   }

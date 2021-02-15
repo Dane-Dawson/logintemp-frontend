@@ -71,6 +71,34 @@ img{
 
 }
 
+.auth-taunt{
+  font-family:Georgia,serif;
+	color:#4E443C;
+	font-variant: small-caps; text-transform: none; font-weight: 20; margin-bottom: 0;
+}
+div.please-log-in{
+  font-family: Georgia,"Times New Roman",serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #600;
+	line-height: 12px;
+	margin: 0;
+	text-transform: uppercase;
+	letter-spacing: .25px
+}
+
+div.home-paragraph{
+color: #424242;
+font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+letter-spacing:0.1em;
+text-align:center;
+margin: 16px auto;
+text-transform: lowercase;
+line-height: 115%;
+font-size: 10pt;
+font-variant: small-caps;
+}
+
 .greeting-text{
   color: #fff;
   font-size: 40px;

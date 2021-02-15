@@ -46,7 +46,7 @@ class AuthDemo extends Component {
 
   authorizationMessage = () => {
     return (
-      <div>
+      <div className="auth-taunt">
         <h2>You need authorization to click that button...</h2>
         <h3>Try all you'd like!</h3>
         {this.props.loggedIn ? (

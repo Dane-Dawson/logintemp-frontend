@@ -59,18 +59,22 @@ class login extends Component {
     return (
       <div>
         <form onSubmit={this.login}>
+          <br />
           <input
             type="text"
             name="username"
             placeholder="Username"
             onChange={this.handleChange}
           />
+          <br />
           <input
-            type="text"
+            type="password"
             name="password"
             placeholder="Password"
             onChange={this.handleChange}
           />
+          <br />
+          <br />
           <button type="submit">Submit</button>
         </form>
         <br />
