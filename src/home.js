@@ -8,25 +8,12 @@ class home extends Component {
     return (
       <div>
       {/* completely unneccessary welcome img, but why not make this at least a little fun */}
-        <img src="https://media.tenor.com/images/22f7fff1a213648197650e36205bb994/tenor.gif"/>
+        <img className = "home-pic" src="https://c.tenor.com/XK15GIbeZEEAAAAC/mark-wahlberg-where-do-i-go.gif"/>
         <br />
+        <p>Try to go to the Auth Check link above and click the button.</p>
+        <p>The route on the backend is authenticated, meaning you need a token to get access!</p>
+        <p>After you log in and get it to work, pick apart this code to see how!</p>
         <br />
-        {/* Simple use of the <Link/> component from react-router */}
-        <Link to="/login">Login</Link>
-        <br />
-        <br />
-        <Link to="/signup">SignUp</Link>
-        <br />
-        <br />
-        <Link to="/auth">Auth Check</Link>
-
-        {/*Below is how to get a similar effect without using a <Link/>  */}
-        {/* 
-                <br/>
-                <a href="/signup">SignUp</a> 
-                <br/><br/>
-                <a href="/login">Login</a> 
-                etc...*/}
       </div>
     );
   }

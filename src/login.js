@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class login extends Component {
-    // The only state "required" for this component is the username and password for the controlled form
-    // The other states are examples of things that could be tracked in state with a log in
+  // The only state "required" for this component is the username and password for the controlled form
+  // The other states are examples of things that could be tracked in state with a log in
+  // This will change drastically depending on your personal choices you make in designing your site
   state = {
     username: "",
     password: "",
@@ -11,7 +12,8 @@ class login extends Component {
     currentUser: "",
   };
 
-  //This is just our controlled form handle change event listener used to take in our login form
+  //This is just our controlled form handleChange event listener used to take in our login form
+  //    info and save it to state for us to use with our fetches, using a little destructuring to create variables
   handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -21,6 +23,7 @@ class login extends Component {
   };
 
   //The login function, take note the endpoint it is targeting and what it is sending in
+  //   This is DIRECTLY related to how you set up your back end routes and methods
   login = (event) => {
     event.preventDefault();
     // Because our form values are stored in state, we can immediately clear the form on submit
@@ -41,17 +44,22 @@ class login extends Component {
       .then((r) => r.json())
       .then((response) => {
         // The token below will be used as a header for Authorization in your fetches
-        // If you look in application controller we are requesting the header Authorization
-        // Once it is recieved the token is decrypted and access to data is granted
+        // We packaged the token into our response from the login method in our backend
+        //      and immediately save it locally (if you open your application tab in chrome devTools
+        //      and look at your local storage and you should see it after a successful login!)
         localStorage.token = response.jwt;
+
         //The line below should also work, if you ever see this syntax
         // localStorage.setItem("token", response.jwt)
 
-        //This example stores the user and loggedIn state here, but you could easily hold this
+        //This example below stores the user and loggedIn state here, but you could easily hold this
         // in a parent component and pass down currentUser as props.
         this.setState({ currentUser: response.user.username, loggedIn: true });
-        //Below I use a very basic example of doing just that
+
+        //Below I use a very basic example of doing just that by setting the current user in a parent 
+        //      on successful login
         this.props.setCurrentUser(response.user);
+
       });
   };
 
@@ -73,7 +81,6 @@ class login extends Component {
           />
           <button type="submit">Submit</button>
         </form>
-        <Link to="/">Home</Link>
         <br />
         <br />
       </div>

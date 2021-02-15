@@ -6,8 +6,22 @@ https://github.com/Dane-Dawson/logintemp-backend
 
 I HIGHLY ENCOURAGE not to clone this repo or directly copy and paste from it, but to write all your code yourself (even if you use this template as a direct starting point). Sometimes there are some hidden character issues with copy pasting from the github pages that will give you very confusing errors.
 
+Key front end pieces:
 
+-A "Create user" fetch
+-A "login" fetch
+-Setting token locally that you recieve from the login fetch (and also likely saving the returned user in state)
+-Using locally stored token in your Authorization header for each authorized fetch
 
+-Most notably pay attention to the functions in App, the login in the login component, and the authorized fetch in the authdemo component.
+
+Everything else I added was fluff/structure to make it more legible and easier to follow, but all one *NEEDS* is the above.
+
+To start you can do
+npm install
+npm start
+
+Take note this is written with the assumption that your backend template is running on localhost:3000!
 
 --Default React README below--
 
@@ -39,6 +53,8 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+
 
 ### `yarn eject`
 

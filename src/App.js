@@ -5,48 +5,114 @@ import Login from "./login";
 import Home from "./home";
 import AuthDemo from "./authdemo";
 
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
 
 class App extends Component {
   state = {
     user: {},
-  };
-
-  // If you open the devTools in chrome, check out the application tab and look at the LocalStorage section
-  // You can see where our token will be stored. The log out simply sets that token to an empty string
-  // and sets active user state as an empty object
-  logOut = () => {
-    this.setState({ user: {} });
-    localStorage.token = "";
+    loggedIn: false,
   };
 
   // A common approach to holding active/current user data on the front end is to have a user or currentUser state
-  // that is populated with the user returned from your login function.
+  // that is populated with the user returned from your login function, and loggedIn state set to true.
   setCurrentUser = (user) => {
-    this.setState({ user });
+    this.setState({
+      user: user,
+      loggedIn: true,
+    });
   };
 
-  // This is just a simple conditiional that checks if there is a user logged in, and if so it has a display of their name
+  // logOut function clears our state of our user, sets our logged in status to false, and removes our token
+  logOut = () => {
+    this.setState({ user: {}, loggedIn: false });
+    // If you open the devTools in chrome, check out the application tab and look at the LocalStorage section
+    // You can see where our token will be stored. The log out simply sets that token to an empty string
+    // and sets active user state as an empty object.
+    localStorage.token = "";
+  };
+
+  // This is just a simple conditiional render that checks if there is a user logged in and, if so, it has a display of their name
   displayGreeting = () => {
-    if (this.state.user.username) {
-      return <h2>Welcome back {this.state.user.username}!</h2>;
+    if (this.state.loggedIn) {
+      return <h1 className="greeting-text">Welcome back {this.state.user.username}!</h1>;
     } else {
-      return <h2>Please log in below</h2>;
+      return (
+        <div>
+          <h2>I'm sorry, I don't know who you are...</h2>
+          <h3>Please log in below!</h3>
+        </div>
+      );
     }
+  };
+
+  // This is the function to log in automatically if there is a token saved locally, it's connected to my
+  // auto_login method in my auth controller in the backend
+  tokenLogin = (token) => {
+    fetch("http://localhost:3000/auto_login", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token: token }),
+    })
+      .then((r) => r.json())
+      .then((user) => this.setCurrentUser(user));
+  };
+
+  //During the component did mount I check if there is a viable token present, and then use it to log in
+  componentDidMount = () => {
+    let token = localStorage.token;
+    token.length > 1
+      ? this.tokenLogin(token)
+      : console.log("No token found, try logging in!");
   };
 
   render() {
     return (
-      <div>
+      <div className="main-div">
         {this.displayGreeting()}
         <BrowserRouter>
+          {/* Simple use of the <Link/> component from react-router, it MUST be inside a BrowserRouter or it's children components */}
+          <Link className="pretty-link" to="/login">
+            Login
+          </Link>
+          <span className="pretty-link">---||||---</span>
+          <Link className="pretty-link" to="/signup">
+            SignUp
+          </Link>
+          <br />
+          {/* This looks a little fancy, but I just added a ternary to check if a user was logged in */}
+          {/* If they were, I rendered a button to let a user log out */}
+          {this.state.loggedIn ? (
+            <span className="pretty-link">
+              <br />
+              <button onClick={this.logOut}>Log Out</button>
+            </span>
+          ) : null}
+          <br />
+          <br />
+          <Link className="pretty-link" to="/">
+            Home
+          </Link>
+          <br />
+          <Link className="pretty-link" to="/auth">
+            Auth Check {!this.state.loggedIn ?"(works better if logged in!)":null}
+          </Link>{" "}
+          <br />
+          <br />
           <Switch>
             <Route exact path="/">
               <Home />
             </Route>
 
+            {/* I added a check in the login path, if a user is logged in it redirects to the home page instead of login */}
             <Route exact path="/login">
-              <Login setCurrentUser={this.setCurrentUser} />
+              {this.state.user.username ? (
+                <Redirect to="/" />
+              ) : (
+                <Login setCurrentUser={this.setCurrentUser} />
+              )}
             </Route>
 
             <Route exact path="/signup">
@@ -54,13 +120,12 @@ class App extends Component {
             </Route>
 
             <Route exact path="/auth">
-              <AuthDemo />
+              <AuthDemo loggedIn={this.state.loggedIn} />
             </Route>
           </Switch>
         </BrowserRouter>
         <br />
         <br />
-        <button onClick={this.logOut}>Log Out</button>
       </div>
     );
   }

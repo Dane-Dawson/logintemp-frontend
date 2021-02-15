@@ -1,3 +1,8 @@
+//This came with the installation of React, ignore this entire file for the purposes of 
+//  the JWT auth demo
+
+// ------------------------------------------------------------------------------------
+
 // This optional code is used to register a service worker.
 // register() is not called by default.
 

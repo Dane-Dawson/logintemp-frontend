@@ -36,3 +36,100 @@
     transform: rotate(360deg);
   }
 }
+
+html {
+  display: table;
+  margin: auto;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+  background-image: url("./starsky.jpg");
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat;
+  height: 900px;
+}
+
+div{
+  text-align: center;
+}
+.main-div{
+  background-color: whitesmoke;
+  border-radius: 20px;
+  padding: 5px;
+  font-family: 'Lucinda Console';
+}
+img{
+  height: 150px;
+}
+.home-pic{
+  margin: auto;
+  display: table;
+  height: 300px;
+
+}
+
+.greeting-text{
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: Helvetica;
+  text-shadow: 
+    0 1px 0 #ccc, 
+    0 2px 0 #c9c9c9, 
+    0 3px 0 #bbb, 
+    0 4px 0 #b9b9b9, 
+    0 5px 0 #aaa, 
+    0 6px 1px rgba(0,0,0,.1), 
+    0 0 5px rgba(0,0,0,.1), 
+    0 1px 3px rgba(0,0,0,.3), 
+    0 3px 5px rgba(0,0,0,.2), 
+    0 5px 10px rgba(0,0,0,.25), 
+    0 10px 10px rgba(0,0,0,.2), 
+    0 20px 20px rgba(0,0,0,.15);
+}
+
+.pretty-link{
+  color: inherit;
+    text-decoration: inherit;
+  text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+
+}
+
+button{
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 300;
+  color:#FFFFFF;
+  background-color:grey;
+  text-align:center;
+  transition: all 0.2s;
+}
+
+button:hover{
+  background-color:#4095c6;
+}
+/* @media all and (max-width:30em){
+   button{
+    display:block;
+  margin:0.2em auto;
+   }
+} */
