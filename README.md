@@ -4,18 +4,29 @@ This is a template to help you with AN approach (not the only or the best) for s
 
 https://github.com/Dane-Dawson/logintemp-backend
 
-I HIGHLY ENCOURAGE not to clone this repo or directly copy and paste from it, but to write all your code yourself (even if you use this template as a direct starting point). Sometimes there are some hidden character issues with copy pasting from the github pages that will give you very confusing errors.
+I HIGHLY ENCOURAGE not to just clone this repo and make your project off this as a base, or directly copy and paste from it. Rather you should write all your code yourself, even if you use this template as a direct inspiration. Besides the fact that writing it yourself helps you learn and understand it, sometimes there are some hidden character issues with copy pasting from the github pages that will give you very confusing errors.
+
+I added a lot of extra stuff and arranged my components and state in a way that made sense to me for this project, but not everything is vital to pay attention to for understanding how JWT works. Instead focus on ->
 
 Key front end pieces:
 
--A "Create user" fetch
--A "login" fetch
--Setting token locally that you recieve from the login fetch (and also likely saving the returned user in state)
--Using locally stored token in your Authorization header for each authorized fetch
+-A "Create user" fetch in the signup component
+-A "login" fetch in the login component
+-Setting token locally that you recieve from the login fetch and also likely saving the returned user somewhere accessible. In my case I saved the token locally in the login function and invoked a setCurrentUser function within my fetch to set my user in state.
+-Using locally stored token in your Authorization header for each authorized fetch, which is done in the authdemo component.
 
--Most notably pay attention to the functions in App, the login in the login component, and the authorized fetch in the authdemo component.
+-Most notably pay attention to the functions in: 
+    -App 
+    -Login in the login component
+    -Authorized fetch in the authdemo component.
 
 Everything else I added was fluff/structure to make it more legible and easier to follow, but all one *NEEDS* is the above.
+Bonus highlights that you can explore
+-Detect token on page refresh for "auto-login"
+-Use of Router, Link, and Redirect
+-Conditional welcome message render
+-Custom CSS
+-
 
 To start you can do
 npm install

@@ -7,7 +7,7 @@ class home extends Component {
   render() {
     return (
       <div>
-      {/* completely unneccessary welcome img, but why not make this at least a little fun */}
+      {/* Completely unneccessary welcome img, but why not make this at least a little fun */}
         <img className = "home-pic" src="https://c.tenor.com/XK15GIbeZEEAAAAC/mark-wahlberg-where-do-i-go.gif"/>
         <br />
         <p>Try to go to the Auth Check link above and click the button.</p>

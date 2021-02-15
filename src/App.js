@@ -14,7 +14,7 @@ class App extends Component {
   };
 
   // A common approach to holding active/current user data on the front end is to have a user or currentUser state
-  // that is populated with the user returned from your login function, and loggedIn state set to true.
+  //    that is populated with the user returned from your login function, then stating loggedIn set to true.
   setCurrentUser = (user) => {
     this.setState({
       user: user,
@@ -25,13 +25,13 @@ class App extends Component {
   // logOut function clears our state of our user, sets our logged in status to false, and removes our token
   logOut = () => {
     this.setState({ user: {}, loggedIn: false });
-    // If you open the devTools in chrome, check out the application tab and look at the LocalStorage section
-    // You can see where our token will be stored. The log out simply sets that token to an empty string
-    // and sets active user state as an empty object.
+    // If you open the devTools in chrome, check out the application tab and look at the LocalStorage section.
+    // You can see where our token will be (or is currently) stored. The log out simply sets that token to an empty string,
+    //    sets active user state as an empty object, and sets our loggedIn status to false.
     localStorage.token = "";
   };
 
-  // This is just a simple conditiional render that checks if there is a user logged in and, if so, it has a display of their name
+  // This is a conditiional render that checks if there is a user logged in and, if so, it has a display of their name.
   displayGreeting = () => {
     if (this.state.loggedIn) {
       return <h1 className="greeting-text">Welcome back {this.state.user.username}!</h1>;
@@ -45,8 +45,20 @@ class App extends Component {
     }
   };
 
+  //During the component did mount I check if there is a viable token present, and then use it in my tokenLogin function.
+  componentDidMount = () => {
+    let token = localStorage.token;
+    if ((typeof token !== 'undefined') && (token.length > 1)){
+      this.tokenLogin(token)
+    } else {
+      console.log("No token found, try logging in!")
+    }
+  };
+
+
   // This is the function to log in automatically if there is a token saved locally, it's connected to my
-  // auto_login method in my auth controller in the backend
+  //    auto_login method in my auth controller in the backend. This enables the user to return to the site
+  //    and be logged in automatically until they manually log out or clear their localStorage.
   tokenLogin = (token) => {
     fetch("http://localhost:3000/auto_login", {
       method: "POST",
@@ -60,20 +72,13 @@ class App extends Component {
       .then((user) => this.setCurrentUser(user));
   };
 
-  //During the component did mount I check if there is a viable token present, and then use it to log in
-  componentDidMount = () => {
-    let token = localStorage.token;
-    token.length > 1
-      ? this.tokenLogin(token)
-      : console.log("No token found, try logging in!");
-  };
 
   render() {
     return (
       <div className="main-div">
         {this.displayGreeting()}
         <BrowserRouter>
-          {/* Simple use of the <Link/> component from react-router, it MUST be inside a BrowserRouter or it's children components */}
+          {/* Straightforward use of the <Link/> component from react-router, it MUST be inside a BrowserRouter or it's children components */}
           <Link className="pretty-link" to="/login">
             Login
           </Link>
@@ -82,7 +87,7 @@ class App extends Component {
             SignUp
           </Link>
           <br />
-          {/* This looks a little fancy, but I just added a ternary to check if a user was logged in */}
+          {/* This looks a little fancy, but I added a ternary to check if a user was logged in */}
           {/* If they were, I rendered a button to let a user log out */}
           {this.state.loggedIn ? (
             <span className="pretty-link">
@@ -106,17 +111,21 @@ class App extends Component {
               <Home />
             </Route>
 
-            {/* I added a check in the login path, if a user is logged in it redirects to the home page instead of login */}
+            {/* I added a check in the login and signup path, if a user is logged in it redirects to the home page instead of login */}
             <Route exact path="/login">
-              {this.state.user.username ? (
-                <Redirect to="/" />
+              {this.state.loggedIn ? (
+                <Redirect to="/"/>
               ) : (
                 <Login setCurrentUser={this.setCurrentUser} />
               )}
             </Route>
 
             <Route exact path="/signup">
+            {this.state.loggedIn ? (
+                <Redirect to="/"/>
+              ) : (
               <SignUp />
+              )}
             </Route>
 
             <Route exact path="/auth">
