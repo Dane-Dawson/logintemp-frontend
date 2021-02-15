@@ -72,7 +72,7 @@ class AuthDemo extends Component {
         {/* This only works for this purpose if your function returns HTML elements or React components */}
         {this.showFetchResponse()}
         {this.state.things.length > 1 ? (
-          <h1>You successfully fetched to an Authorized Path!!</h1>
+          <h1 className="auth-taunt">You successfully fetched to an Authorized Path!!</h1>
         ) : null}
         <br />
         <br />
