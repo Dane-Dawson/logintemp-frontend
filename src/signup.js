@@ -3,6 +3,8 @@ import { Redirect, Link } from "react-router-dom";
 
 class signup extends Component {
   // State is used for a controlled form on User creation
+  //   If you wanted to do a password confirmation you can also choose to do the logic here to check if
+  //      password and passwordConfirmation match before sending the POST
   state = {
     username: "",
     password: "",
@@ -44,7 +46,7 @@ class signup extends Component {
       .then((response) => {
         // We are reciving a status of "created" if the user is valid and saved to the database
         // This also shows how you can interact with the status of a response
-        //  one *could* set some conditional effects on their site depending on if state.created is true
+        //  One *could* set some conditional effects on their site depending on if state.created is true
         if (response.status === "created") {
           this.setState({ created: true });
         }

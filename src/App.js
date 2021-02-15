@@ -34,7 +34,11 @@ class App extends Component {
   // This is a conditiional render that checks if there is a user logged in and, if so, it has a display of their name.
   displayGreeting = () => {
     if (this.state.loggedIn) {
-      return <h1 className="greeting-text">Welcome back {this.state.user.username}!</h1>;
+      return (
+        <h1 className="greeting-text">
+          Welcome back {this.state.user.username}!
+        </h1>
+      );
     } else {
       return (
         <div>
@@ -45,16 +49,16 @@ class App extends Component {
     }
   };
 
-  //During the component did mount I check if there is a viable token present, and then use it in my tokenLogin function.
+  //During the component did mount I check if there is a viable token present and it's lenght is more
+  //    than an empty string, and then use it in my tokenLogin function.
   componentDidMount = () => {
     let token = localStorage.token;
-    if ((typeof token !== 'undefined') && (token.length > 1)){
-      this.tokenLogin(token)
+    if (typeof token !== "undefined" && token.length > 1) {
+      this.tokenLogin(token);
     } else {
-      console.log("No token found, try logging in!")
+      console.log("No token found, try logging in!");
     }
   };
-
 
   // This is the function to log in automatically if there is a token saved locally, it's connected to my
   //    auto_login method in my auth controller in the backend. This enables the user to return to the site
@@ -71,7 +75,6 @@ class App extends Component {
       .then((r) => r.json())
       .then((user) => this.setCurrentUser(user));
   };
-
 
   render() {
     return (
@@ -102,7 +105,8 @@ class App extends Component {
           </Link>
           <br />
           <Link className="pretty-link" to="/auth">
-            Auth Check {!this.state.loggedIn ?"(works better if logged in!)":null}
+            Auth Check{" "}
+            {!this.state.loggedIn ? "(works better if logged in!)" : null}
           </Link>{" "}
           <br />
           <br />
@@ -114,18 +118,14 @@ class App extends Component {
             {/* I added a check in the login and signup path, if a user is logged in it redirects to the home page instead of login */}
             <Route exact path="/login">
               {this.state.loggedIn ? (
-                <Redirect to="/"/>
+                <Redirect to="/" />
               ) : (
                 <Login setCurrentUser={this.setCurrentUser} />
               )}
             </Route>
 
             <Route exact path="/signup">
-            {this.state.loggedIn ? (
-                <Redirect to="/"/>
-              ) : (
-              <SignUp />
-              )}
+              {this.state.loggedIn ? <Redirect to="/" /> : <SignUp />}
             </Route>
 
             <Route exact path="/auth">
