@@ -12,8 +12,13 @@ class login extends Component {
   //This is just our controlled form handleChange event listener used to take in our login form
   //    info and save it to state for us to use with our fetches, using a little destructuring to create variables
   handleChange = (event) => {
+    // this would be like saying the following
+    // let name = event.target.name
+    // let value = event.target.value
     const { name, value } = event.target;
 
+    // For using a variable in setting the key in state you *need* to use a square bracket
+    //  This allows you to pull the value from the variable instead setting the key as "name"
     this.setState({
       [name]: value,
     });
