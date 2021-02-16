@@ -10,6 +10,7 @@ class signup extends Component {
     password: "",
     email: "",
     created: false,
+    errorMessage: ""
   };
 
   // Handle change event listener with a clean destructuring for value/name
@@ -48,9 +49,10 @@ class signup extends Component {
         // This also shows how you can interact with the status of a response
         //  One *could* set some conditional effects on their site depending on if state.created is true
         if (response.status === "created") {
-          this.setState({ created: true });
-        }
-      });
+          this.setState({ created: true, errorMessage: "" });
+        } 
+    })
+    .catch(response => this.setState({ errorMessage: "Uh-oh! It didn't work...Make sure your server is running!"}))
   };
 
   render() {
@@ -60,6 +62,7 @@ class signup extends Component {
           <Redirect to="/login" />
         ) : (
           <div>
+          <div className="please-log-in"><p >{this.state.errorMessage}</p></div>
             <br />
             <form onSubmit={this.createUser}>
               <input
