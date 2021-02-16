@@ -52,6 +52,7 @@ class signup extends Component {
           this.setState({ created: true, errorMessage: "" });
         } 
     })
+    // This error message triggers if the fetch does NOT work
     .catch(response => this.setState({ errorMessage: "Uh-oh! It didn't work...Make sure your server is running!"}))
   };
 
