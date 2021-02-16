@@ -3,6 +3,33 @@
 
 // ------------------------------------------------------------------------------------
 
+
+
+// TAKE NOTE OF THE ABOVE MESSAGE BEFORE YOU READ ANY FURTHER
+
+
+// IF YOU ARE HERE FOR THE AUTH DEMO YOU HAVE TAKEN A WRONG TURN
+
+
+// IF YOU JUST WANT TO LOOK AT THIS CODE, GO FOR IT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// From here on out I did NOT write the code or comments
+
+
 // This optional code is used to register a service worker.
 // register() is not called by default.
 
