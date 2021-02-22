@@ -8,7 +8,7 @@ This is a template to help you with AN approach (not the only or the best) for s
 
 https://github.com/Dane-Dawson/logintemp-backend
 
-I HIGHLY ENCOURAGE not to just clone this repo and make your project off this as a base, or directly copy and paste from it. Rather you should write all your code yourself, even if you use this template as a direct inspiration. Besides the fact that writing it yourself helps you learn and understand it, sometimes there are some hidden character issues with copy pasting from the github pages that will give you very confusing errors.<br/>
+I HIGHLY ENCOURAGE not to just clone this repo and make your project off this as a base, or directly copy and paste from it. Rather you should write all your code yourself, even if you use this template as a direct inspiration. Besides the fact that writing it yourself helps you learn and understand it, sometimes there are some hidden character issues with copy pasting from the github pages that will give you very confusing errors. Every .js file has an EXACT COPY of the code with extensive comments to explain whats going on and a uncommented file to show it more clearly. <br/>
 To start we run
 ```
 npm install
